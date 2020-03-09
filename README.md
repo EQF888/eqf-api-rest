@@ -3,12 +3,12 @@ Eqf Rest Api
 Api Docs in English: https://github.com/eqf/eqf-api-rest/blob/master/README_en.md
 Java版示例：https://github.com/eqf/eqf-api-rest/tree/master/master/java/eqf-api-rest-java
 注意事项
-
+
 1.apiKey和apiSecret可从FatBTC申请的
-
-
+
+
 2.返回数据:
-
+
   所有接口返回数据格式都为  {"status":1, "msg":"success", data:""}
   
   1. status: 状态码, 1表示成功 其他表示失败 
@@ -50,15 +50,15 @@ Java版示例：https://github.com/eqf/eqf-api-rest/tree/master/master/java/eqf-
   	ORDER_IS_DONE_OR_CANCELED: 订单已取消或已完成
   
   3. data: 数据, 详见接口说明 
-
-
+
+
 3.本示例内url前缀为：https://www.eqf.com (建议中国大陆用户使用https://www.eqf.us)
-
+
 接口说明
-
+
 1.获得系统时间戳
 getSystemTimeStamp()
-
+
   url:/m/timestamp/{timestamp}
   
   method:get
@@ -72,11 +72,11 @@ getSystemTimeStamp()
   }
   
   注意：交易请求返回 ILLEGAL_TIMESTAMP时，使用该方法返回的时间戳，带入请求参数
-
-
+
+
 2.获取系统支持的交易对
 getSymbols()
-
+
   url:/m/symbols/{site_id}/{timestamp}
   
   method:get
@@ -100,11 +100,11 @@ getSymbols()
   		"maker_fee":挂单手续费费率
   	}]
   }
-
-
+
+
 3.创建订单
 createOrder()
-
+
   url:/order/api/order
   
   method:post
@@ -130,11 +130,11 @@ createOrder()
     "msg": "success",
     "data": 订单id
   }
-
-
+
+
 4.取消订单
 cancelOrder()
-
+
   url:/order/api/order
   
   method:delete
@@ -156,11 +156,11 @@ cancelOrder()
     "status": 1,
     "msg": "success"
   }
-
-
+
+
 5.提现
 withdraw()
-
+
   url:/order/api/withdraw
   
   method:post
@@ -183,11 +183,11 @@ withdraw()
     "msg": "success",
     "data": 提现订单id
   }
-
-
+
+
 6.获得单个币资产
 getSingleCurrency()
-
+
   url:/m/api/a/account/{site_id}/{currency}/{api_key}/{timestamp}/{sign_type}/{sign}
   
   method:get
@@ -212,11 +212,11 @@ getSingleCurrency()
   		total_balance: 总余额。可交易余额 = 总余额 - 冻结余额
   	}
   }
-
-
+
+
 7.获得资产列表
 getCurrencyList()
-
+
   url:/m/api/a/accounts/{site_id}/{apikey}/{timestamp}/{signType}/{sign}
   
   method:get
@@ -262,11 +262,11 @@ getCurrencyList()
   		withdraw_fee_percent: 提现手续费是否按百分比，0表示固定手续费，即固定为withdraw_fee，1表示提现手续费按百分比，即提现额的百分之withdraw_fee
   	}]
   }
-
-
+
+
 8.获得单个订单的交易明细（仅返回当前apikey对应数据）
 getSingleOrderDetail()
-
+
   url:/m/api/o/order/trades/{symbol}/{id}/{apikey}/{timestamp}/{signType}/{sign}
   
   method:get
@@ -299,11 +299,11 @@ getSingleOrderDetail()
   		volume: 成交数量
   	}]
   }
-
-
+
+
 9.获得订单列表（仅返回当前apikey对应数据）
 getOrderList()
-
+
   url:/m/api/o/orders
   
   method:get
@@ -346,11 +346,11 @@ getOrderList()
   		volume: 数量，对限价单，表示下单时指定的数量，对于市价买单，表示买多少计价货币，市价卖单表示卖多少基础货币
   	}]
   }
-
-
+
+
 10.获得已成交记录（仅返回当前apikey对应数据）
 getSuccessedOrders()
-
+
   url:/m/api/t/trades/{symbol}/{page}/{pageSize}/{apikey}/{timestamp}/{signType}/{sign}
   
   method:get
@@ -385,3 +385,4 @@ getSuccessedOrders()
   		volume: 成交数量
   	}]
   }
+
